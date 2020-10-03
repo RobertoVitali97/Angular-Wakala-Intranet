@@ -1,0 +1,22 @@
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* non era possibile effettuare un override nel .css appropriato per via dello scope in cui viene applicato */
+mat-sidenav *{
+  user-select: none;
+}
+mat-sidenav mat-expansion-panel .mat-expansion-panel-body {
+  padding: 0 !important;
+}
+mat-sidenav mat-expansion-panel .mat-expansion-panel-body mat-list-item {
+  padding-left: 20px !important;
+}
+mat-sidenav mat-expansion-panel .mat-expansion-indicator::after {
+  color: white;
+}

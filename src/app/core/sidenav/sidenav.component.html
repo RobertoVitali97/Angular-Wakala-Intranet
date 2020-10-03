@@ -1,0 +1,68 @@
+<mat-sidenav-container>
+    <mat-sidenav #sidenav [(opened)]="open">
+        <mat-nav-list>
+            <!-- Home -->
+            <mat-list-item (click)="closeSideNav()" routerLink="/Home" routerLinkActive="active">
+                <mat-icon mat-list-icon>home</mat-icon>
+                <span class="listItemText mat-subheading-2">Home</span>
+            </mat-list-item>
+            <!-- Rubrica -->
+            <mat-list-item (click)="closeSideNav()" routerLink="/Contacts" routerLinkActive="active">
+                <mat-icon mat-list-icon>ballot</mat-icon>
+                <span class="listItemText mat-subheading-2">Rubrica</span>
+            </mat-list-item>
+            <!-- Personale -->
+            <mat-accordion>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-icon mat-list-icon>personal</mat-icon>
+                    <span class="listItemText mat-subheading-2">Personale</span>
+                </mat-expansion-panel-header>
+                <!-- Assenze -->
+                <mat-list-item (click)="closeSideNav()">
+                    <mat-icon mat-list-icon>work_off</mat-icon>
+                    <span class="listItemText mat-subheading-2">Assenze</span>
+                </mat-list-item>
+                <!-- Buste Paga -->
+                <mat-list-item (click)="closeSideNav()">
+                    <mat-icon mat-list-icon>euro_symbol</mat-icon>
+                    <span class="listItemText mat-subheading-2">Buste paga</span>
+                </mat-list-item>
+            </mat-expansion-panel>
+            <!-- Documenti -->
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-icon mat-list-icon>description</mat-icon>
+                    <span class="listItemText mat-subheading-2">Documenti</span>
+                </mat-expansion-panel-header>
+                <!-- Assenze -->
+                <mat-list-item (click)="closeSideNav()" routerLink="/Documents/SharedDocuments" routerLinkActive="active">
+                    <mat-icon mat-list-icon>share</mat-icon>
+                    <span class="listItemText mat-subheading-2">Condivisi</span>
+                </mat-list-item>
+                <!-- Buste Paga -->
+                <mat-list-item (click)="closeSideNav()">
+                    <mat-icon mat-list-icon>remove_red_eye</mat-icon>
+                    <span class="listItemText mat-subheading-2">Presa visione</span>
+                </mat-list-item>
+                <mat-list-item (click)="closeSideNav()">
+                    <mat-icon mat-list-icon>format_align_justify</mat-icon>
+                    <span class="listItemText mat-subheading-2">Da firmare</span>
+                </mat-list-item>
+                <mat-list-item (click)="closeSideNav()">
+                    <mat-icon mat-list-icon>grading</mat-icon>
+                    <span class="listItemText mat-subheading-2">Firmati</span>
+                </mat-list-item>
+            </mat-expansion-panel>
+            </mat-accordion>
+            <!-- News -->
+            <mat-list-item (click)="closeSideNav()" routerLink="/News" routerLinkActive="active">
+                <mat-icon mat-list-icon>menu_book</mat-icon>
+                <span class="listItemText mat-subheading-2">News</span>
+            </mat-list-item>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

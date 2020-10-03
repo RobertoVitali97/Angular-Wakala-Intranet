@@ -1,0 +1,38 @@
+mat-sidenav-container {
+  height: calc(100% - 128px);
+}
+
+mat-sidenav-container {
+  height: calc(100% - 128px);
+}
+
+mat-sidenav {
+  width: 250px;
+  background-color: #8258ca;
+  color: white !important;
+}
+
+mat-sidenav mat-list-item.active {
+  background-color: #9f7fd7;
+}
+
+mat-icon {
+  color: white;
+}
+
+.listItemText {
+  font-weight: 500;
+  color: white;
+  margin: auto 0px auto 10px !important;
+}
+
+mat-sidenav mat-expansion-panel {
+  box-shadow: none;
+  background-color: #8258ca;
+  margin: 0 !important;
+}
+
+mat-sidenav mat-expansion-panel mat-expansion-panel-header {
+  padding: 0 20px;
+  height: 56px !important;
+}

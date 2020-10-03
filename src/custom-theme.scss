@@ -1,0 +1,14 @@
+@import "~@angular/material/theming";
+@include mat-core();
+
+$wakalaintranetv1-primary: mat-palette($mat-deep-purple);
+$wakalaintranetv1-accent: mat-palette($mat-yellow);
+$wakalaintranetv1-warn: mat-palette($mat-red);
+
+$wakalaintranetv1-theme: mat-light-theme(
+  $wakalaintranetv1-primary,
+  $wakalaintranetv1-accent,
+  $wakalaintranetv1-warn
+);
+
+@include angular-material-theme($wakalaintranetv1-theme);
