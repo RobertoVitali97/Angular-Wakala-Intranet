@@ -1,1 +1,3 @@
-<p class="asd">contacts</p>
+<mat-card *ngFor="let contact of contacts">
+    {{contact.Name}} {{contact.Surname}} - {{contact.CellularNumber}} - {{contact.EmailAddress}}
+</mat-card>

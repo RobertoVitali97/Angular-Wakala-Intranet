@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./sidenav.component.css']
 })
 export class SidenavComponent {
-  open = true;
+  open = false;
 
   toggleOpen() {
     this.open = !this.open;

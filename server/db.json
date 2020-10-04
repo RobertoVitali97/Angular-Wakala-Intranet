@@ -1,0 +1,32 @@
+{
+    "contacts": [
+        {
+            "id": 1,
+            "Name": "Roberto",
+            "Surname": "Vitali",
+            "CellularNumber": "3927124409",
+            "EmailAddress": "r.vitali@wakala.it"
+        },
+        {
+            "id": 2,
+            "Name": "Manuel",
+            "Surname": "Atturo",
+            "CellularNumber": "33333123123",
+            "EmailAddress": "m.atturo@wakala.it"
+        },
+        {
+            "id": 3,
+            "Name": "Paolo",
+            "Surname": "Rossi",
+            "CellularNumber": "190381928312",
+            "EmailAddress": "p.rossi@wakala.it"
+        },
+        {
+            "id": 4,
+            "Name": "Pippo",
+            "Surname": "Franco",
+            "CellularNumber": "109823091823",
+            "EmailAddress": "p.franco@wakala.it"
+        }
+    ]
+}
