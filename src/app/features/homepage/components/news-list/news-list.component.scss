@@ -1,0 +1,15 @@
+mat-card {
+  overflow: hidden;
+}
+
+mat-icon {
+  height: auto;
+  width: auto;
+  margin-right: 10px;
+}
+
+.news-list {
+  background-color: hsl(0, 0%, 93%);
+  max-height: 35vh;
+  overflow-y: scroll;
+}

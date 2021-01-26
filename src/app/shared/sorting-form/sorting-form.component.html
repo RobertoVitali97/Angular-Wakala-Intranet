@@ -1,0 +1,45 @@
+<mat-card>
+  <form #searchForm="ngForm" (ngSubmit)="onSubmit()" [formGroup]="searchFormGroup">
+    <div class="row align-items-center m-0">
+      <div *ngFor="let control of FormTemplate" [class]="control.class">
+        <div [ngSwitch]="control.control">
+
+          <!-- Input -->
+          <mat-form-field *ngSwitchCase="'input'" class="w-100" hideRequiredMarker>
+            <mat-label>{{control.label}}</mat-label>
+            <input matInput [formControlName]="control.name" autocomplete="off" maxlength="50" [required]="control.required">
+            <mat-error *ngIf="searchFormGroup.controls[control.name].touched && searchFormGroup.controls[control.name].invalid">
+              <span *ngIf="searchFormGroup.controls[control.name].errors.required">Informazione obbligatoria</span>
+              <span *ngIf="!searchFormGroup.controls[control.name].errors.required || searchFormGroup.controls[control.name].errors.pattern">{{control.patternError}}</span>
+            </mat-error>
+          </mat-form-field>
+
+          <!-- Select -->
+          <mat-form-field *ngSwitchCase="'select'" class="w-100" hideRequiredMarker>
+            <mat-label>{{control.label}}</mat-label>
+            <mat-select [formControlName]="control.name">
+              <mat-option *ngFor="let option of control.options" [value]="option">{{option.displayName}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="searchFormGroup.controls[control.name].touched && searchFormGroup.controls[control.name].invalid">
+              <span *ngIf="searchFormGroup.controls[control.name].errors.required">Informazione obbligatoria</span>
+            </mat-error>
+          </mat-form-field>
+
+          <!-- Date Picker Range -->
+          <mat-form-field *ngSwitchCase="'rangePicker'" class="w-100" hideRequiredMarker>
+            <mat-label>{{control.label}}</mat-label>
+            <mat-date-range-input [formGroupName]="control.name" [rangePicker]="picker" (click)="picker.open()">
+              <input matStartDate readonly [required]="control.required" formControlName="start">
+              <input matEndDate readonly [required]="control.required" formControlName="end">
+            </mat-date-range-input>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker [touchUi]="isMobile" #picker></mat-date-range-picker>
+            <mat-error *ngIf="searchFormGroup.get(control.name)['controls'].start.errors || searchFormGroup.get(control.name)['controls'].end.errors">Informazione non valida</mat-error>
+          </mat-form-field>
+
+        </div>
+      </div>
+      <div class="col-12 col-md-3 ml-auto" *ngIf="searchForm"> <button class="w-100" color="primary" [disabled]="!searchForm.valid && !searchForm.disabled" mat-raised-button type="submit">Ricerca <mat-icon>search</mat-icon></button> </div>
+    </div>
+  </form>
+</mat-card>

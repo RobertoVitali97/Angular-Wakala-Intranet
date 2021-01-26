@@ -1,0 +1,12 @@
+.bgTest {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+}
+
+.bgTest svg {
+  filter: drop-shadow(0px 4px 9px #673ab7);
+}

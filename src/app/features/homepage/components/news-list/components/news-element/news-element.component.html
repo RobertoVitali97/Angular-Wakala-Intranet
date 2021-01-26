@@ -1,0 +1,11 @@
+<mat-card class="mb-2 overflow-hidden mat-elevation-z0">
+  <div class="d-flex titleContainer mb-2">
+    <div class="type-icon {{item.Tipologia.IconCssClass}}">
+      <mat-icon mat-card-avatar>{{item.Tipologia.Icon | faConvertIcon}}</mat-icon>
+    </div>
+    <span class="title">{{item.Titolo}}</span>
+    <mat-icon class="dateIcon ml-auto d-none d-md-block" mat-card-avatar>calendar_today</mat-icon>
+    <span class="date d-none d-md-block">{{item.Data | customDate}}</span>
+  </div>
+  <div class="description">{{item.Testo}}</div>
+</mat-card>

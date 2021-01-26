@@ -1,16 +1,15 @@
-import { Component, ViewChild } from '@angular/core';
-import { SidenavComponent } from './core/sidenav/sidenav.component';
-
+import { Component } from '@angular/core';
+import { AuthenticationService } from './auth/authentication.service';
+import { SidenavService } from './core/sidenav/sidenav.service';
 @Component({
   selector: 'wakala-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  @ViewChild(SidenavComponent, { static: false })
-  sidenav: SidenavComponent;
-
-  menuIconClickHandler() {
-    this.sidenav.toggleOpen();
+  constructor(private sidenavService: SidenavService, private authService: AuthenticationService) {
+    if (this.authService.isLoggedIn()) {
+      this.sidenavService.loadMenu();
+    }
   }
 }

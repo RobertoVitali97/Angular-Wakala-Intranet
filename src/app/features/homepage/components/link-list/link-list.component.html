@@ -1,0 +1,9 @@
+<div class="row m-0">
+  <div *ngFor="let link of links" [class]="'link ' + link.class">
+    <mat-card class="mat-elevation-z8" [style]="'backgroundColor: '+link.color" [routerLink]="link.link">
+      <span class="title h3">{{link.title}}</span>
+      <span>{{link.description}}</span>
+      <mat-icon class="d-none d-md-block">{{link.icon}}</mat-icon>
+    </mat-card>
+  </div>
+</div>

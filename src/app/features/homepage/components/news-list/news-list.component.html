@@ -1,0 +1,9 @@
+<mat-card class="mb-3 p-0 mat-elevation-z8">
+  <mat-toolbar color="primary">
+    <mat-icon mat-card-avatar>menu_book</mat-icon>
+    <span style="font-weight: 500; font-size: 1.1em;">News</span>
+  </mat-toolbar>
+  <div class="news-list p-3">
+    <wakala-homepage-news-element *ngFor="let item of news" [item]="item"></wakala-homepage-news-element>
+  </div>
+</mat-card>

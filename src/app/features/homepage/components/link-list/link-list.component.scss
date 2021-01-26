@@ -1,0 +1,29 @@
+span {
+  display: block;
+  color: white;
+}
+
+.link {
+  transition: filter 0.2s;
+  cursor: pointer;
+}
+
+.link:hover {
+  filter: brightness(90%);
+}
+
+mat-card {
+  outline: none !important;
+  height: 120px;
+}
+
+mat-icon {
+  position: absolute;
+  right: 10px;
+  font-size: 3.5em;
+  top: 5px;
+  width: 55px;
+  height: 55px;
+  opacity: 0.15;
+  color: white;
+}

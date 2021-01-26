@@ -1,0 +1,79 @@
+html,
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  height: 100%;
+}
+button {
+  outline: none !important;
+}
+
+// ####################################
+
+// #region Sidenav
+.sidenav {
+  .mat-list-base{
+    padding-top: 0 !important;
+  }
+  user-select: none;
+  .mat-expansion-panel-body {
+    padding: 0 !important;
+    mat-list-item {
+      padding-left: 20px !important;
+    }
+  }
+}
+// #endregion
+
+// #region Spinner
+body.loading {
+  overflow: hidden !important;
+}
+mat-spinner circle {
+  stroke: #73a046 !important;
+  stroke-linecap: round;
+}
+// #endregion
+
+// #region Snackbar
+snack-bar-container {
+  &.error {
+    background-color: #f44336 !important;
+  }
+  &.confirm {
+    background-color: #61b15a !important;
+  }
+  simple-snack-bar {
+    display: block !important;
+    font-size: 1em !important;
+    color: white !important;
+    text-align: center !important;
+    font-weight: 500 !important;
+  }
+}
+// #endregion
+
+// #region Paginator
+@media only screen and (max-width: 576px) {
+  .mat-paginator-page-size-label {
+    display: none;
+  }
+}
+// #endregion
+
+// #region Scrollbar
+/* Scrollbar */
+// ::-webkit-scrollbar {
+//   width: 8px;
+// }
+// ::-webkit-scrollbar-track {
+//   background-color: transparent;
+// }
+// ::-webkit-scrollbar-thumb {
+//   border-radius: 4px;
+//   background-color: hsl(0, 0%, 75%);
+// }
+// ::-webkit-scrollbar-thumb:hover {
+//   background-color: hsl(0, 0%, 65%);
+// }
+// #endregion

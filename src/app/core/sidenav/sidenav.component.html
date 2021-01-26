@@ -1,68 +1,58 @@
-<mat-sidenav-container>
-    <mat-sidenav #sidenav [(opened)]="open">
-        <mat-nav-list>
-            <!-- Home -->
-            <mat-list-item (click)="closeSideNav()" routerLink="/Home" routerLinkActive="active">
-                <mat-icon mat-list-icon>home</mat-icon>
-                <span class="listItemText mat-subheading-2">Home</span>
-            </mat-list-item>
-            <!-- Rubrica -->
-            <mat-list-item (click)="closeSideNav()" routerLink="/Contacts" routerLinkActive="active">
-                <mat-icon mat-list-icon>ballot</mat-icon>
-                <span class="listItemText mat-subheading-2">Rubrica</span>
-            </mat-list-item>
-            <!-- Personale -->
-            <mat-accordion>
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                    <mat-icon mat-list-icon>personal</mat-icon>
-                    <span class="listItemText mat-subheading-2">Personale</span>
-                </mat-expansion-panel-header>
-                <!-- Assenze -->
-                <mat-list-item (click)="closeSideNav()" routerLink="/Personal/Absences" routerLinkActive="active">
-                    <mat-icon mat-list-icon>work_off</mat-icon>
-                    <span class="listItemText mat-subheading-2">Assenze</span>
-                </mat-list-item>
-                <!-- Buste Paga -->
-                <mat-list-item (click)="closeSideNav()" routerLink="/Personal/PaySlips" routerLinkActive="active">
-                    <mat-icon mat-list-icon>euro_symbol</mat-icon>
-                    <span class="listItemText mat-subheading-2">Buste paga</span>
-                </mat-list-item>
-            </mat-expansion-panel>
-            <!-- Documenti -->
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                    <mat-icon mat-list-icon>description</mat-icon>
-                    <span class="listItemText mat-subheading-2">Documenti</span>
-                </mat-expansion-panel-header>
-                <!-- Assenze -->
-                <mat-list-item (click)="closeSideNav()" routerLink="/Documents/SharedDocuments" routerLinkActive="active">
-                    <mat-icon mat-list-icon>share</mat-icon>
-                    <span class="listItemText mat-subheading-2">Condivisi</span>
-                </mat-list-item>
-                <!-- Buste Paga -->
-                <mat-list-item (click)="closeSideNav()" routerLink="/Documents/SeenDocuments" routerLinkActive="active">
-                    <mat-icon mat-list-icon>remove_red_eye</mat-icon>
-                    <span class="listItemText mat-subheading-2">Presa visione</span>
-                </mat-list-item>
-                <mat-list-item (click)="closeSideNav()" routerLink="/Documents/ToSignDocuments" routerLinkActive="active">
-                    <mat-icon mat-list-icon>format_align_justify</mat-icon>
-                    <span class="listItemText mat-subheading-2">Da firmare</span>
-                </mat-list-item>
-                <mat-list-item (click)="closeSideNav()" routerLink="/Documents/SignedDocuments" routerLinkActive="active">
-                    <mat-icon mat-list-icon>grading</mat-icon>
-                    <span class="listItemText mat-subheading-2">Firmati</span>
-                </mat-list-item>
-            </mat-expansion-panel>
-            </mat-accordion>
-            <!-- News -->
-            <mat-list-item (click)="closeSideNav()" routerLink="/News" routerLinkActive="active">
-                <mat-icon mat-list-icon>menu_book</mat-icon>
-                <span class="listItemText mat-subheading-2">News</span>
-            </mat-list-item>
-        </mat-nav-list>
-    </mat-sidenav>
-    <mat-sidenav-content>
-        <router-outlet></router-outlet>
-    </mat-sidenav-content>
-</mat-sidenav-container>
+<div class="wrapper">
+  <mat-toolbar *ngIf="authService.isLoggedIn()" class="header" color="primary">
+    <button mat-icon-button (click)="drawer.toggle()"><mat-icon>menu</mat-icon></button>
+    <button class="ml-auto user-info-button" mat-button>
+      <img class="avatar-img" [src]="authService.getLocalUser()?.AvatarImageUrl">
+      {{authService.getLocalUser()?.Email}}
+    </button>
+    <button mat-raised-button (click)="authService.logout()">Logout</button>
+  </mat-toolbar>
+  <mat-drawer-container class="drawer-container">
+    <mat-drawer #drawer class="sidenav" mode="over">
+      <mat-nav-list>
+        <div class="p-3 d-flex justify-content-center align-items-center drawer-header">
+          <img class="mr-3" src="https://intranet.wakala.it/images/logo-small.png">
+          <span>Intranet</span>
+        </div>
+        <ng-container *ngFor="let item of sidenavService.Menu">
+
+          <mat-list-item *ngIf="item.Type == 'Action'" [routerLink]="item.Link" routerLinkActive="active">
+            <div class="d-flex align-content-center">
+              <mat-icon>{{item.Icon}}</mat-icon>
+              <span class="listItemText">{{item.Name}}</span>
+            </div>
+          </mat-list-item>
+          
+          <mat-expansion-panel *ngIf="item.Type == 'Panel'">
+            <mat-expansion-panel-header>
+              <div class="d-flex align-content-center">
+                <mat-icon>{{item.Icon}}</mat-icon>
+                <span class="listItemText">{{item.Name}}</span>
+              </div>
+            </mat-expansion-panel-header>
+              <mat-list-item *ngFor="let child of item.Actions" [routerLink]="child.Link" routerLinkActive="active">
+                <div class="d-flex align-content-center">
+                  <mat-icon>{{child.Icon}}</mat-icon>
+                  <span class="listItemText">{{child.Name}}</span>
+                </div>
+              </mat-list-item>
+          </mat-expansion-panel>
+
+        </ng-container>
+
+      </mat-nav-list>
+    </mat-drawer>
+  
+    <div class="page-content">
+      <router-outlet></router-outlet>
+    </div>
+
+    <mat-toolbar *ngIf="authService.isLoggedIn()" class="footer" color="primary">
+      <span class="text">
+        Copyright © {{fullYear}}
+        <a class="sitelink" href="https://www.wakala.it/">Wakala Srl</a>
+        <span class="arr">All rights reserved</span>
+      </span>
+    </mat-toolbar>
+  </mat-drawer-container>
+</div>
